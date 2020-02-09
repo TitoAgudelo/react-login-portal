@@ -1,10 +1,6 @@
 import { userConstants } from '../constants';
 
-const INITIAL_STATE = () => ({
-	registering: false,
-});
-
-export function registration(state = new INITIAL_STATE(), action) {
+export function registration(state = {}, action) {
   switch (action.type) {
     case userConstants.REGISTER_REQUEST:
       return {
@@ -15,8 +11,7 @@ export function registration(state = new INITIAL_STATE(), action) {
         registering: false
       };
     case userConstants.REGISTER_FAILURE:
-      const newState = new INITIAL_STATE();
-      return newState;
+      return {};
     default:
       return state
   }

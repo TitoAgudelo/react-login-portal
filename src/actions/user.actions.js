@@ -17,7 +17,6 @@ function login(username, password) {
       .then(
         user => {
           dispatch(success(user));
-          localStorage.setItem('user', user);
           history.push('/');
           dispatch(alertActions.success(''));
         },

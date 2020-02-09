@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';
-import { HomePage } from '../components/HomePage';
+import HomePage from '../components/HomePage';
 import { configure } from 'enzyme';
 import { Link } from 'react-router-dom';
 import Adapter from 'enzyme-adapter-react-16';

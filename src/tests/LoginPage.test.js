@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import expect from 'expect';
-import { TestLoginPage } from '../components/LoginPage';
+import LoginPage from '../components/LoginPage';
 import { App } from '../App';
 import { configure } from 'enzyme';
 import { Link } from 'react-router-dom';
@@ -33,7 +33,7 @@ export const CustomProvider = ({ children }) => {
 describe("Test LoginPage component", () => {
   it('check route, dispatch and store setup for component', () => {
     // test will not compile if component is not correctly setup
-    const wrapper = mount(<MemoryRouter><TestLoginPage dispatch={spy()}/></MemoryRouter>, {
+    const wrapper = mount(<MemoryRouter><LoginPage dispatch={spy()}/></MemoryRouter>, {
                             context: {store: mockedStore},
                             childContextTypes: {store: PropTypes.object.isRequired}});
     const inst = wrapper.children();
