@@ -1,40 +1,41 @@
 export const userService = {
-    login,
-    logout,
-    register
+  login,
+  logout,
+  register
 };
 
-function login(username, password) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-    };
+async function login(username, password) {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password })
+  };
 
-    // call `/users/authenticate` with requestOptions to authenticate the login process
-    
+  // call `/users/authenticate` with requestOptions to authenticate the login process
+  return await fetch('/users/authenticate', requestOptions).then(handleResponse);
 }
 
 function logout() {
-    // remove user from local storage to log user out
+  // remove user from local storage to log user out
+  localStorage.clear();
 }
 
 
-function register(user) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-    };
+async function register(user) {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(user)
+  };
 
-    return fetch('/users/register', requestOptions).then(handleResponse);
+  return await fetch('/users/register', requestOptions).then(handleResponse);
 }
 
 
 function handleResponse(response) {
-    if (!response.ok) {
-        return Promise.reject(response.statusText);
-    }
+  if (!response.ok) {
+    return Promise.reject(response.statusText);
+  }
 
-    return response.json();
+  return response.json();
 }
